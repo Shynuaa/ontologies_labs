@@ -1,0 +1,161 @@
+@prefix : <http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14/> .
+
+<http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#ИмеетПотомка
+:ИмеетПотомка rdf:type owl:ObjectProperty ,
+                       owl:TransitiveProperty ;
+              rdfs:domain :Человек ;
+              rdfs:range :Человек .
+
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#ИмеетПредка
+:ИмеетПредка rdf:type owl:ObjectProperty ,
+                      owl:TransitiveProperty ;
+             rdfs:domain :Человек ;
+             rdfs:range :Человек .
+
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#ИмеетРодителя
+:ИмеетРодителя rdf:type owl:ObjectProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain :Человек ;
+               rdfs:range :Человек .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#Человек
+:Человек rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#Арья
+:Арья rdf:type owl:NamedIndividual ,
+               :Человек ;
+      :ИмеетРодителя :Эддард .
+
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#Бран
+:Бран rdf:type owl:NamedIndividual ,
+               :Человек ;
+      :ИмеетРодителя :Эддард .
+
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#Джон
+:Джон rdf:type owl:NamedIndividual ,
+               :Человек ;
+      :ИмеетРодителя :Лиана .
+
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#Лиана
+:Лиана rdf:type owl:NamedIndividual ,
+                :Человек ;
+       :ИмеетРодителя :Рикард .
+
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#Рикард
+:Рикард rdf:type owl:NamedIndividual ,
+                 :Человек .
+
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#Рикон
+:Рикон rdf:type owl:NamedIndividual ,
+                :Человек ;
+       :ИмеетРодителя :Эддард .
+
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#Робб
+:Робб rdf:type owl:NamedIndividual ,
+               :Человек ;
+      :ИмеетРодителя :Эддард .
+
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#Санса
+:Санса rdf:type owl:NamedIndividual ,
+                :Человек ;
+       :ИмеетРодителя :Эддард .
+
+
+###  http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-14#Эддард
+:Эддард rdf:type owl:NamedIndividual ,
+                 :Человек ;
+        :ИмеетРодителя :Рикард .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:x rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:y rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S2" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :ИмеетПредка ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :y
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :ИмеетПотомка ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :y ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :x
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "S1" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :ИмеетРодителя ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :y
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :ИмеетПредка ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :x ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :y
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
