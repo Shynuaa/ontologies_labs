@@ -4,9 +4,20 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
 @base <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3> .
 
 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/> rdf:type owl:Ontology .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+swrla:isRuleEnabled rdf:type owl:AnnotationProperty .
+
 
 #################################################################
 #    Datatypes
@@ -291,5 +302,168 @@ xsd:date rdf:type rdfs:Datatype .
          :имеетПросрочки "false"^^xsd:boolean ;
          :имеетСтажРаботы 10 .
 
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean
+] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean
+ ] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean
+ ] .
+
+#################################################################
+#    Rules
+#################################################################
+
+<#z> rdf:type swrl:Variable .
+
+<#a> rdf:type swrl:Variable .
+
+<#3p> rdf:type swrl:Variable .
+
+<#3r> rdf:type swrl:Variable .
+
+:z rdf:type swrl:Variable .
+
+:a rdf:type swrl:Variable .
+
+:r rdf:type swrl:Variable .
+
+[ rdfs:label "Одобрение_рейтинг" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :КредитнаяЗаявка ;
+                           swrl:argument1 :z
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :заявкаПоданаЗаемщиком ;
+                                      swrl:argument1 :z ;
+                                      swrl:argument2 :a
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                 swrl:propertyPredicate :имеетКредитныйРейтинг ;
+                                                 swrl:argument1 :a ;
+                                                 swrl:argument2 :r
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                            swrl:builtin swrlb:greaterThan ;
+                                                            swrl:arguments [ rdf:type rdf:List ;
+                                                                             rdf:first :r ;
+                                                                             rdf:rest [ rdf:type rdf:List ;
+                                                                                        rdf:first 700 ;
+                                                                                        rdf:rest rdf:nil
+                                                                                      ]
+                                                                           ]
+                                                          ] ;
+                                                rdf:rest rdf:nil
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :ОдобреннаяЗаявка ;
+                           swrl:argument1 :z
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ rdfs:label "Отклонение_просрочки" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :КредитнаяЗаявка ;
+                           swrl:argument1 :z
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :заявкаПоданаЗаемщиком ;
+                                      swrl:argument1 :z ;
+                                      swrl:argument2 :a
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                 swrl:propertyPredicate :имеетПросрочки ;
+                                                 swrl:argument1 :a ;
+                                                 swrl:argument2 "true"^^xsd:boolean
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :ОтклоненнаяЗаявка ;
+                           swrl:argument1 :z
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "Одобрение_поручитель" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :КредитнаяЗаявка ;
+                           swrl:argument1 <#z>
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :заявкаПоданаЗаемщиком ;
+                                      swrl:argument1 <#z> ;
+                                      swrl:argument2 <#a>
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate :являетсяПоручителемДля ;
+                                                 swrl:argument1 <#p> ;
+                                                 swrl:argument2 <#a>
+                                               ] ;
+                                     rdf:rest [ rdf:type swrl:AtomList ;
+                                                rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                            swrl:propertyPredicate :имеетКредитныйРейтинг ;
+                                                            swrl:argument1 <#p> ;
+                                                            swrl:argument2 <#r>
+                                                          ] ;
+                                                rdf:rest [ rdf:type swrl:AtomList ;
+                                                           rdf:first [ rdf:type swrl:BuiltinAtom ;
+                                                                       swrl:builtin swrlb:greaterThan ;
+                                                                       swrl:arguments [ rdf:type rdf:List ;
+                                                                                        rdf:first <#r> ;
+                                                                                        rdf:rest [ rdf:type rdf:List ;
+                                                                                                   rdf:first 750 ;
+                                                                                                   rdf:rest rdf:nil
+                                                                                                 ]
+                                                                                      ]
+                                                                     ] ;
+                                                           rdf:rest [ rdf:type swrl:AtomList ;
+                                                                      rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                                                  swrl:propertyPredicate :имеетПросрочки ;
+                                                                                  swrl:argument1 <#a> ;
+                                                                                  swrl:argument2 "false"^^xsd:boolean
+                                                                                ] ;
+                                                                      rdf:rest rdf:nil
+                                                                    ]
+                                                         ]
+                                              ]
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :ОдобреннаяЗаявка ;
+                           swrl:argument1 <#z>
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

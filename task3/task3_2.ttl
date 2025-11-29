@@ -19,9 +19,43 @@
 :p rdf:type swrl:Variable .
 :r rdf:type swrl:Variable .
 
-### Правило 1: Одобрение если рейтинг высокий и нет просрочек
+### Правило 1: Отклонение если есть просрочки
 [ swrla:isRuleEnabled "true"^^xsd:boolean ;
-  rdfs:label "Одобрение_высокий_рейтинг" ;
+  rdfs:label "Отклонение_просрочки" ;
+  rdf:type swrl:Imp ;
+  swrl:body [ rdf:type swrl:AtomList ;
+              rdf:first [ rdf:type swrl:ClassAtom ;
+                          swrl:classPredicate :КредитнаяЗаявка ;
+                          swrl:argument1 :z
+                        ] ;
+              rdf:rest [ rdf:type swrl:AtomList ;
+                         rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                     swrl:propertyPredicate :заявкаПоданаЗаемщиком ;
+                                     swrl:argument1 :z ;
+                                     swrl:argument2 :a
+                                   ] ;
+                         rdf:rest [ rdf:type swrl:AtomList ;
+                                    rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                swrl:propertyPredicate :имеетПросрочки ;
+                                                swrl:argument1 :a ;
+                                                swrl:argument2 "true"^^xsd:boolean
+                                              ] ;
+                                    rdf:rest rdf:nil
+                                  ]
+                       ]
+            ] ;
+  swrl:head [ rdf:type swrl:AtomList ;
+              rdf:first [ rdf:type swrl:ClassAtom ;
+                          swrl:classPredicate :ОтклоненнаяЗаявка ;
+                          swrl:argument1 :z
+                        ] ;
+              rdf:rest rdf:nil
+            ]
+] .
+
+### Правило 2: Одобрение если рейтинг высокий и нет просрочек
+[ swrla:isRuleEnabled "true"^^xsd:boolean ;
+  rdfs:label "Одобрение_рейтинг" ;
   rdf:type swrl:Imp ;
   swrl:body [ rdf:type swrl:AtomList ;
               rdf:first [ rdf:type swrl:ClassAtom ;
@@ -66,9 +100,9 @@
             ]
 ] .
 
-### Правило 2: Одобрение через поручителя
+### Правило 3: Одобрение через поручителя (только если нет просрочек)
 [ swrla:isRuleEnabled "true"^^xsd:boolean ;
-  rdfs:label "Одобрение_через_поручителя" ;
+  rdfs:label "Одобрение_поручитель" ;
   rdf:type swrl:Imp ;
   swrl:body [ rdf:type swrl:AtomList ;
               rdf:first [ rdf:type swrl:ClassAtom ;
@@ -98,7 +132,14 @@
                                                                       swrl:builtin swrlb:greaterThan ;
                                                                       swrl:arguments (:r "750"^^xsd:integer)
                                                                     ] ;
-                                                          rdf:rest rdf:nil
+                                                          rdf:rest [ rdf:type swrl:AtomList ;
+                                                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                                                 swrl:propertyPredicate :имеетПросрочки ;
+                                                                                 swrl:argument1 :a ;
+                                                                                 swrl:argument2 "false"^^xsd:boolean
+                                                                               ] ;
+                                                                     rdf:rest rdf:nil
+                                                                   ]
                                                         ]
                                              ]
                                   ]
@@ -113,36 +154,4 @@
             ]
 ] .
 
-### Правило 3: Отклонение при просрочках
-[ swrla:isRuleEnabled "true"^^xsd:boolean ;
-  rdfs:label "Отклонение_просрочки" ;
-  rdf:type swrl:Imp ;
-  swrl:body [ rdf:type swrl:AtomList ;
-              rdf:first [ rdf:type swrl:ClassAtom ;
-                          swrl:classPredicate :КредитнаяЗаявка ;
-                          swrl:argument1 :z
-                        ] ;
-              rdf:rest [ rdf:type swrl:AtomList ;
-                         rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
-                                     swrl:propertyPredicate :заявкаПоданаЗаемщиком ;
-                                     swrl:argument1 :z ;
-                                     swrl:argument2 :a
-                                   ] ;
-                         rdf:rest [ rdf:type swrl:AtomList ;
-                                    rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
-                                                swrl:propertyPredicate :имеетПросрочки ;
-                                                swrl:argument1 :a ;
-                                                swrl:argument2 "true"^^xsd:boolean
-                                              ] ;
-                                    rdf:rest rdf:nil
-                                  ]
-                       ]
-            ] ;
-  swrl:head [ rdf:type swrl:AtomList ;
-              rdf:first [ rdf:type swrl:ClassAtom ;
-                          swrl:classPredicate :ОтклоненнаяЗаявка ;
-                          swrl:argument1 :z
-                        ] ;
-              rdf:rest rdf:nil
-            ]
-] .
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
