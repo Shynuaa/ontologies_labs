@@ -99,11 +99,11 @@
 
 **Описание:** Заявка одобряется, если за заемщиком стоит поручитель с рейтингом выше 750 и у заемщика нет просрочек. Используется транзитивное свойство поручительства.
 
-## Примеры SPARQL запросов для проверки
+## Примеры SPARQL запросов для проверки (в Apache Jena Fuseki)
 
 ### Запрос 1: Все одобренные заявки
 ```sparql
-PREFIX : <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/>
+PREFIX : <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3>
 SELECT ?заявка ?заемщик ?рейтинг
 WHERE {
   ?заявка a :ОдобреннаяЗаявка ;
@@ -114,22 +114,13 @@ WHERE {
 
 ### Запрос 2: Все отклоненные заявки с причиной
 ```sparql
-PREFIX : <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/>
+PREFIX : <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3>
 SELECT ?заявка ?заемщик ?рейтинг
 WHERE {
   ?заявка a :ОтклоненнаяЗаявка ;
           :заявкаПоданаЗаемщиком ?заемщик .
   ?заемщик :имеетКредитныйРейтинг ?рейтинг ;
            :имеетПросрочки true .
-}
-```
-
-### Запрос 3: Цепочки поручительств
-```sparql
-PREFIX : <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/>
-SELECT ?поручитель ?заемщик
-WHERE {
-  ?поручитель :являетсяПоручителемДля ?заемщик .
 }
 ```
 
