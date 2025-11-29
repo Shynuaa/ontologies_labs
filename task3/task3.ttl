@@ -1,0 +1,205 @@
+@prefix : <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/> .
+
+<http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  Транзитивное свойство
+:являетсяПоручителемДля rdf:type owl:ObjectProperty , owl:TransitiveProperty ;
+             rdfs:domain :Заемщик ;
+             rdfs:range :Заемщик .
+
+:заявкаПоданаЗаемщиком rdf:type owl:ObjectProperty ;
+                       rdfs:domain :КредитнаяЗаявка ;
+                       rdfs:range :Заемщик .
+
+:имеетКредитнуюИсторию rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Заемщик ;
+                       rdfs:range :КредитнаяИстория .
+
+:обрабатываетсяБанком rdf:type owl:ObjectProperty ;
+                      rdfs:domain :КредитнаяЗаявка ;
+                      rdfs:range :Банк .
+
+:относитсяКПродукту rdf:type owl:ObjectProperty ;
+                    rdfs:domain :КредитнаяЗаявка ;
+                    rdfs:range :КредитныйПродукт .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+:имеетВозраст rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Заемщик ;
+              rdfs:range xsd:integer .
+
+:имеетДатуПодачи rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :КредитнаяЗаявка ;
+                 rdfs:range xsd:date .
+
+:имеетЕжемесячныйДоход rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :Заемщик ;
+                       rdfs:range xsd:decimal .
+
+:имеетЗадолженность rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :КредитнаяИстория ;
+                    rdfs:range xsd:decimal .
+
+:имеетКоличествоКредитов rdf:type owl:DatatypeProperty ;
+                         rdfs:domain :КредитнаяИстория ;
+                         rdfs:range xsd:integer .
+
+:имеетКредитныйРейтинг rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :Заемщик ;
+                       rdfs:range xsd:integer .
+
+:имеетПросрочки rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Заемщик ;
+                rdfs:range xsd:boolean .
+
+:имеетПросрочкиВИстории rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :КредитнаяИстория ;
+                        rdfs:range xsd:boolean .
+
+:имеетСрокКредита rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :КредитнаяЗаявка ;
+                  rdfs:range xsd:integer .
+
+:имеетСтавку rdf:type owl:DatatypeProperty ;
+             rdfs:domain :КредитнаяЗаявка ;
+             rdfs:range xsd:decimal .
+
+:имеетСтажРаботы rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Заемщик ;
+                 rdfs:range xsd:integer .
+
+:имеетСуммуКредита rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :КредитнаяЗаявка ;
+                   rdfs:range xsd:decimal .
+
+:имеетПлатежВМесяц rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :КредитнаяЗаявка ;
+                   rdfs:range xsd:decimal .
+
+:имеетКоэффициентНагрузки rdf:type owl:DatatypeProperty ;
+                          rdfs:domain :КредитнаяЗаявка ;
+                          rdfs:range xsd:decimal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+:Банк rdf:type owl:Class .
+
+:Заемщик rdf:type owl:Class .
+
+:КредитнаяЗаявка rdf:type owl:Class .
+
+:КредитнаяИстория rdf:type owl:Class .
+
+:КредитныйПродукт rdf:type owl:Class .
+
+:ОдобреннаяЗаявка rdf:type owl:Class ;
+                  rdfs:subClassOf :КредитнаяЗаявка .
+
+:ОтклоненнаяЗаявка rdf:type owl:Class ;
+                   rdfs:subClassOf :КредитнаяЗаявка .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+### Кредитные продукты
+:Ипотека rdf:type owl:NamedIndividual , :КредитныйПродукт .
+
+:Автокредит rdf:type owl:NamedIndividual , :КредитныйПродукт .
+
+:ПотребительскийКредит rdf:type owl:NamedIndividual , :КредитныйПродукт .
+
+### Банк
+:РайффайзенБанк rdf:type owl:NamedIndividual , :Банк .
+
+### Кредитные истории
+:История_Татьяна rdf:type owl:NamedIndividual , :КредитнаяИстория ;
+                 :имеетЗадолженность "0"^^xsd:decimal ;
+                 :имеетКоличествоКредитов "2"^^xsd:integer ;
+                 :имеетПросрочкиВИстории "false"^^xsd:boolean .
+
+:История_Петр rdf:type owl:NamedIndividual , :КредитнаяИстория ;
+              :имеетЗадолженность "150000"^^xsd:decimal ;
+              :имеетКоличествоКредитов "5"^^xsd:integer ;
+              :имеетПросрочкиВИстории "true"^^xsd:boolean .
+
+:История_Степан rdf:type owl:NamedIndividual , :КредитнаяИстория ;
+                :имеетЗадолженность "50000"^^xsd:decimal ;
+                :имеетКоличествоКредитов "1"^^xsd:integer ;
+                :имеетПросрочкиВИстории "false"^^xsd:boolean .
+
+### Заемщики с транзитивными связями
+:Татьяна rdf:type owl:NamedIndividual , :Заемщик ;
+         :имеетКредитнуюИсторию :История_Татьяна ;
+         :имеетВозраст "35"^^xsd:integer ;
+         :имеетЕжемесячныйДоход "150000"^^xsd:decimal ;
+         :имеетКредитныйРейтинг "780"^^xsd:integer ;
+         :имеетПросрочки "false"^^xsd:boolean ;
+         :имеетСтажРаботы "10"^^xsd:integer ;
+         :являетсяПоручителемДля :Петр .
+
+:Петр rdf:type owl:NamedIndividual , :Заемщик ;
+      :имеетКредитнуюИсторию :История_Петр ;
+      :имеетВозраст "25"^^xsd:integer ;
+      :имеетЕжемесячныйДоход "80000"^^xsd:decimal ;
+      :имеетКредитныйРейтинг "620"^^xsd:integer ;
+      :имеетПросрочки "true"^^xsd:boolean ;
+      :имеетСтажРаботы "3"^^xsd:integer ;
+      :являетсяПоручителемДля :Степан .
+
+:Степан rdf:type owl:NamedIndividual , :Заемщик ;
+        :имеетКредитнуюИсторию :История_Степан ;
+        :имеетВозраст "28"^^xsd:integer ;
+        :имеетЕжемесячныйДоход "120000"^^xsd:decimal ;
+        :имеетКредитныйРейтинг "710"^^xsd:integer ;
+        :имеетПросрочки "false"^^xsd:boolean ;
+        :имеетСтажРаботы "5"^^xsd:integer .
+
+### Кредитные заявки
+:Заявка001 rdf:type owl:NamedIndividual , :КредитнаяЗаявка ;
+           :заявкаПоданаЗаемщиком :Татьяна ;
+           :обрабатываетсяБанком :РайффайзенБанк ;
+           :относитсяКПродукту :Ипотека ;
+           :имеетДатуПодачи "2025-01-15"^^xsd:date ;
+           :имеетСрокКредита "240"^^xsd:integer ;
+           :имеетСтавку "8.5"^^xsd:decimal ;
+           :имеетСуммуКредита "3000000"^^xsd:decimal .
+
+:Заявка002 rdf:type owl:NamedIndividual , :КредитнаяЗаявка ;
+           :заявкаПоданаЗаемщиком :Петр ;
+           :обрабатываетсяБанком :РайффайзенБанк ;
+           :относитсяКПродукту :Автокредит ;
+           :имеетДатуПодачи "2025-01-18"^^xsd:date ;
+           :имеетСрокКредита "60"^^xsd:integer ;
+           :имеетСтавку "12.0"^^xsd:decimal ;
+           :имеетСуммуКредита "1500000"^^xsd:decimal .
+
+:Заявка003 rdf:type owl:NamedIndividual , :КредитнаяЗаявка ;
+           :заявкаПоданаЗаемщиком :Степан ;
+           :обрабатываетсяБанком :РайффайзенБанк ;
+           :относитсяКПродукту :ПотребительскийКредит ;
+           :имеетДатуПодачи "2025-02-17"^^xsd:date ;
+           :имеетСрокКредита "36"^^xsd:integer ;
+           :имеетСтавку "10.5"^^xsd:decimal ;
+           :имеетСуммуКредита "500000"^^xsd:decimal .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
