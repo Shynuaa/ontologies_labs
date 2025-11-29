@@ -1,117 +1,174 @@
-@prefix : <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/> .
+@prefix : <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/> .
+@base <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3> .
 
 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/> rdf:type owl:Ontology .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  Транзитивное свойство
-:являетсяПоручителемДля rdf:type owl:ObjectProperty , owl:TransitiveProperty ;
-             rdfs:domain :Заемщик ;
-             rdfs:range :Заемщик .
-
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/заявкаПоданаЗаемщиком
 :заявкаПоданаЗаемщиком rdf:type owl:ObjectProperty ;
                        rdfs:domain :КредитнаяЗаявка ;
                        rdfs:range :Заемщик .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетКредитнуюИсторию
 :имеетКредитнуюИсторию rdf:type owl:ObjectProperty ;
                        rdfs:domain :Заемщик ;
                        rdfs:range :КредитнаяИстория .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/обрабатываетсяБанком
 :обрабатываетсяБанком rdf:type owl:ObjectProperty ;
                       rdfs:domain :КредитнаяЗаявка ;
                       rdfs:range :Банк .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/относитсяКПродукту
 :относитсяКПродукту rdf:type owl:ObjectProperty ;
                     rdfs:domain :КредитнаяЗаявка ;
                     rdfs:range :КредитныйПродукт .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/являетсяПоручителемДля
+:являетсяПоручителемДля rdf:type owl:ObjectProperty ,
+                                 owl:TransitiveProperty ;
+                        rdfs:domain :Заемщик ;
+                        rdfs:range :Заемщик .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетВозраст
 :имеетВозраст rdf:type owl:DatatypeProperty ;
               rdfs:domain :Заемщик ;
               rdfs:range xsd:integer .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетДатуПодачи
 :имеетДатуПодачи rdf:type owl:DatatypeProperty ;
                  rdfs:domain :КредитнаяЗаявка ;
                  rdfs:range xsd:date .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетЕжемесячныйДоход
 :имеетЕжемесячныйДоход rdf:type owl:DatatypeProperty ;
                        rdfs:domain :Заемщик ;
                        rdfs:range xsd:decimal .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетЗадолженность
 :имеетЗадолженность rdf:type owl:DatatypeProperty ;
                     rdfs:domain :КредитнаяИстория ;
                     rdfs:range xsd:decimal .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетКоличествоКредитов
 :имеетКоличествоКредитов rdf:type owl:DatatypeProperty ;
                          rdfs:domain :КредитнаяИстория ;
                          rdfs:range xsd:integer .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетКоэффициентНагрузки
+:имеетКоэффициентНагрузки rdf:type owl:DatatypeProperty ;
+                          rdfs:domain :КредитнаяЗаявка ;
+                          rdfs:range xsd:decimal .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетКредитныйРейтинг
 :имеетКредитныйРейтинг rdf:type owl:DatatypeProperty ;
                        rdfs:domain :Заемщик ;
                        rdfs:range xsd:integer .
 
-:имеетПросрочки rdf:type owl:DatatypeProperty ;
-                rdfs:domain :Заемщик ;
-                rdfs:range xsd:boolean .
 
-:имеетПросрочкиВИстории rdf:type owl:DatatypeProperty ;
-                        rdfs:domain :КредитнаяИстория ;
-                        rdfs:range xsd:boolean .
-
-:имеетСрокКредита rdf:type owl:DatatypeProperty ;
-                  rdfs:domain :КредитнаяЗаявка ;
-                  rdfs:range xsd:integer .
-
-:имеетСтавку rdf:type owl:DatatypeProperty ;
-             rdfs:domain :КредитнаяЗаявка ;
-             rdfs:range xsd:decimal .
-
-:имеетСтажРаботы rdf:type owl:DatatypeProperty ;
-                 rdfs:domain :Заемщик ;
-                 rdfs:range xsd:integer .
-
-:имеетСуммуКредита rdf:type owl:DatatypeProperty ;
-                   rdfs:domain :КредитнаяЗаявка ;
-                   rdfs:range xsd:decimal .
-
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетПлатежВМесяц
 :имеетПлатежВМесяц rdf:type owl:DatatypeProperty ;
                    rdfs:domain :КредитнаяЗаявка ;
                    rdfs:range xsd:decimal .
 
-:имеетКоэффициентНагрузки rdf:type owl:DatatypeProperty ;
-                          rdfs:domain :КредитнаяЗаявка ;
-                          rdfs:range xsd:decimal .
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетПросрочки
+:имеетПросрочки rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Заемщик ;
+                rdfs:range xsd:boolean .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетПросрочкиВИстории
+:имеетПросрочкиВИстории rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :КредитнаяИстория ;
+                        rdfs:range xsd:boolean .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетСрокКредита
+:имеетСрокКредита rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :КредитнаяЗаявка ;
+                  rdfs:range xsd:integer .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетСтавку
+:имеетСтавку rdf:type owl:DatatypeProperty ;
+             rdfs:domain :КредитнаяЗаявка ;
+             rdfs:range xsd:decimal .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетСтажРаботы
+:имеетСтажРаботы rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Заемщик ;
+                 rdfs:range xsd:integer .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетСуммуКредита
+:имеетСуммуКредита rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :КредитнаяЗаявка ;
+                   rdfs:range xsd:decimal .
 
 
 #################################################################
 #    Classes
 #################################################################
 
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Банк
 :Банк rdf:type owl:Class .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Заемщик
 :Заемщик rdf:type owl:Class .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/КредитнаяЗаявка
 :КредитнаяЗаявка rdf:type owl:Class .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/КредитнаяИстория
 :КредитнаяИстория rdf:type owl:Class .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/КредитныйПродукт
 :КредитныйПродукт rdf:type owl:Class .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/ОдобреннаяЗаявка
 :ОдобреннаяЗаявка rdf:type owl:Class ;
                   rdfs:subClassOf :КредитнаяЗаявка .
 
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/ОтклоненнаяЗаявка
 :ОтклоненнаяЗаявка rdf:type owl:Class ;
                    rdfs:subClassOf :КредитнаяЗаявка .
 
@@ -120,86 +177,119 @@
 #    Individuals
 #################################################################
 
-### Кредитные продукты
-:Ипотека rdf:type owl:NamedIndividual , :КредитныйПродукт .
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Автокредит
+:Автокредит rdf:type owl:NamedIndividual ,
+                     :КредитныйПродукт .
 
-:Автокредит rdf:type owl:NamedIndividual , :КредитныйПродукт .
 
-:ПотребительскийКредит rdf:type owl:NamedIndividual , :КредитныйПродукт .
-
-### Банк
-:РайффайзенБанк rdf:type owl:NamedIndividual , :Банк .
-
-### Кредитные истории
-:История_Татьяна rdf:type owl:NamedIndividual , :КредитнаяИстория ;
-                 :имеетЗадолженность "0"^^xsd:decimal ;
-                 :имеетКоличествоКредитов "2"^^xsd:integer ;
-                 :имеетПросрочкиВИстории "false"^^xsd:boolean .
-
-:История_Петр rdf:type owl:NamedIndividual , :КредитнаяИстория ;
-              :имеетЗадолженность "150000"^^xsd:decimal ;
-              :имеетКоличествоКредитов "5"^^xsd:integer ;
-              :имеетПросрочкиВИстории "true"^^xsd:boolean .
-
-:История_Степан rdf:type owl:NamedIndividual , :КредитнаяИстория ;
-                :имеетЗадолженность "50000"^^xsd:decimal ;
-                :имеетКоличествоКредитов "1"^^xsd:integer ;
-                :имеетПросрочкиВИстории "false"^^xsd:boolean .
-
-### Заемщики с транзитивными связями
-:Татьяна rdf:type owl:NamedIndividual , :Заемщик ;
-         :имеетКредитнуюИсторию :История_Татьяна ;
-         :имеетВозраст "35"^^xsd:integer ;
-         :имеетЕжемесячныйДоход "150000"^^xsd:decimal ;
-         :имеетКредитныйРейтинг "780"^^xsd:integer ;
-         :имеетПросрочки "false"^^xsd:boolean ;
-         :имеетСтажРаботы "10"^^xsd:integer ;
-         :являетсяПоручителемДля :Петр .
-
-:Петр rdf:type owl:NamedIndividual , :Заемщик ;
-      :имеетКредитнуюИсторию :История_Петр ;
-      :имеетВозраст "25"^^xsd:integer ;
-      :имеетЕжемесячныйДоход "80000"^^xsd:decimal ;
-      :имеетКредитныйРейтинг "620"^^xsd:integer ;
-      :имеетПросрочки "true"^^xsd:boolean ;
-      :имеетСтажРаботы "3"^^xsd:integer ;
-      :являетсяПоручителемДля :Степан .
-
-:Степан rdf:type owl:NamedIndividual , :Заемщик ;
-        :имеетКредитнуюИсторию :История_Степан ;
-        :имеетВозраст "28"^^xsd:integer ;
-        :имеетЕжемесячныйДоход "120000"^^xsd:decimal ;
-        :имеетКредитныйРейтинг "710"^^xsd:integer ;
-        :имеетПросрочки "false"^^xsd:boolean ;
-        :имеетСтажРаботы "5"^^xsd:integer .
-
-### Кредитные заявки
-:Заявка001 rdf:type owl:NamedIndividual , :КредитнаяЗаявка ;
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Заявка001
+:Заявка001 rdf:type owl:NamedIndividual ,
+                    :КредитнаяЗаявка ;
            :заявкаПоданаЗаемщиком :Татьяна ;
            :обрабатываетсяБанком :РайффайзенБанк ;
            :относитсяКПродукту :Ипотека ;
            :имеетДатуПодачи "2025-01-15"^^xsd:date ;
-           :имеетСрокКредита "240"^^xsd:integer ;
-           :имеетСтавку "8.5"^^xsd:decimal ;
-           :имеетСуммуКредита "3000000"^^xsd:decimal .
+           :имеетСрокКредита 240 ;
+           :имеетСтавку 8.5 ;
+           :имеетСуммуКредита 3000000 .
 
-:Заявка002 rdf:type owl:NamedIndividual , :КредитнаяЗаявка ;
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Заявка002
+:Заявка002 rdf:type owl:NamedIndividual ,
+                    :КредитнаяЗаявка ;
            :заявкаПоданаЗаемщиком :Петр ;
            :обрабатываетсяБанком :РайффайзенБанк ;
            :относитсяКПродукту :Автокредит ;
            :имеетДатуПодачи "2025-01-18"^^xsd:date ;
-           :имеетСрокКредита "60"^^xsd:integer ;
-           :имеетСтавку "12.0"^^xsd:decimal ;
-           :имеетСуммуКредита "1500000"^^xsd:decimal .
+           :имеетСрокКредита 60 ;
+           :имеетСтавку 12.0 ;
+           :имеетСуммуКредита 1500000 .
 
-:Заявка003 rdf:type owl:NamedIndividual , :КредитнаяЗаявка ;
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Заявка003
+:Заявка003 rdf:type owl:NamedIndividual ,
+                    :КредитнаяЗаявка ;
            :заявкаПоданаЗаемщиком :Степан ;
            :обрабатываетсяБанком :РайффайзенБанк ;
            :относитсяКПродукту :ПотребительскийКредит ;
            :имеетДатуПодачи "2025-02-17"^^xsd:date ;
-           :имеетСрокКредита "36"^^xsd:integer ;
-           :имеетСтавку "10.5"^^xsd:decimal ;
-           :имеетСуммуКредита "500000"^^xsd:decimal .
+           :имеетСрокКредита 36 ;
+           :имеетСтавку 10.5 ;
+           :имеетСуммуКредита 500000 .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Ипотека
+:Ипотека rdf:type owl:NamedIndividual ,
+                  :КредитныйПродукт .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/История_Петр
+:История_Петр rdf:type owl:NamedIndividual ,
+                       :КредитнаяИстория ;
+              :имеетЗадолженность 150000 ;
+              :имеетКоличествоКредитов 5 ;
+              :имеетПросрочкиВИстории "true"^^xsd:boolean .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/История_Степан
+:История_Степан rdf:type owl:NamedIndividual ,
+                         :КредитнаяИстория ;
+                :имеетЗадолженность 50000 ;
+                :имеетКоличествоКредитов 1 ;
+                :имеетПросрочкиВИстории "false"^^xsd:boolean .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/История_Татьяна
+:История_Татьяна rdf:type owl:NamedIndividual ,
+                          :КредитнаяИстория ;
+                 :имеетЗадолженность 0 ;
+                 :имеетКоличествоКредитов 2 ;
+                 :имеетПросрочкиВИстории "false"^^xsd:boolean .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Петр
+:Петр rdf:type owl:NamedIndividual ,
+               :Заемщик ;
+      :имеетКредитнуюИсторию :История_Петр ;
+      :являетсяПоручителемДля :Степан ;
+      :имеетВозраст 25 ;
+      :имеетЕжемесячныйДоход 80000 ;
+      :имеетКредитныйРейтинг 620 ;
+      :имеетПросрочки "true"^^xsd:boolean ;
+      :имеетСтажРаботы 3 .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/ПотребительскийКредит
+:ПотребительскийКредит rdf:type owl:NamedIndividual ,
+                                :КредитныйПродукт .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/РайффайзенБанк
+:РайффайзенБанк rdf:type owl:NamedIndividual ,
+                         :Банк .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Степан
+:Степан rdf:type owl:NamedIndividual ,
+                 :Заемщик ;
+        :имеетКредитнуюИсторию :История_Степан ;
+        :имеетВозраст 28 ;
+        :имеетЕжемесячныйДоход 120000 ;
+        :имеетКредитныйРейтинг 710 ;
+        :имеетПросрочки "false"^^xsd:boolean ;
+        :имеетСтажРаботы 5 .
+
+
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Татьяна
+:Татьяна rdf:type owl:NamedIndividual ,
+                  :Заемщик ;
+         :имеетКредитнуюИсторию :История_Татьяна ;
+         :являетсяПоручителемДля :Петр ;
+         :имеетВозраст 35 ;
+         :имеетЕжемесячныйДоход 150000 ;
+         :имеетКредитныйРейтинг 780 ;
+         :имеетПросрочки "false"^^xsd:boolean ;
+         :имеетСтажРаботы 10 .
 
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
