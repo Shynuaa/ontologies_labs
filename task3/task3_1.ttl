@@ -1,0 +1,235 @@
+@prefix : <http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-8/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-8/> .
+
+<http://www.semanticweb.org/aleks/ontologies/2025/9/untitled-ontology-8/> rdf:type owl:Ontology ;
+    rdfs:label "Банковская онтология для кредитного скоринга" ;
+    rdfs:comment "Расширенная онтология для автоматизации процесса одобрения кредитных заявок" .
+
+#################################################################
+#    Classes
+#################################################################
+
+###  Классы предметной области
+
+:Заемщик rdf:type owl:Class ;
+    rdfs:label "Заемщик" ;
+    rdfs:comment "Физическое или юридическое лицо, подающее кредитную заявку" .
+
+:КредитнаяЗаявка rdf:type owl:Class ;
+    rdfs:label "Кредитная заявка" ;
+    rdfs:comment "Запрос на получение кредита от заемщика" .
+
+:ОдобреннаяЗаявка rdf:type owl:Class ;
+    rdfs:label "Одобренная заявка" ;
+    rdfs:comment "Кредитная заявка, удовлетворяющая критериям одобрения" ;
+    rdfs:subClassOf :КредитнаяЗаявка .
+
+:ОтклоненнаяЗаявка rdf:type owl:Class ;
+    rdfs:label "Отклоненная заявка" ;
+    rdfs:comment "Кредитная заявка, не удовлетворяющая критериям одобрения" ;
+    rdfs:subClassOf :КредитнаяЗаявка .
+
+:КредитныйПродукт rdf:type owl:Class ;
+    rdfs:label "Кредитный продукт" ;
+    rdfs:comment "Тип кредитного продукта (ипотека, автокредит, потребительский кредит)" .
+
+:Банк rdf:type owl:Class ;
+    rdfs:label "Банк" ;
+    rdfs:comment "Кредитная организация" .
+
+:КредитнаяИстория rdf:type owl:Class ;
+    rdfs:label "Кредитная история" ;
+    rdfs:comment "История кредитных отношений заемщика" .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  Объектные свойства (связи между объектами)
+
+:поданаЗаемщиком rdf:type owl:ObjectProperty ;
+    rdfs:domain :КредитнаяЗаявка ;
+    rdfs:range :Заемщик ;
+    rdfs:label "подана заемщиком" .
+
+:имеетКредитнуюИсторию rdf:type owl:ObjectProperty ;
+    rdfs:domain :Заемщик ;
+    rdfs:range :КредитнаяИстория ;
+    rdfs:label "имеет кредитную историю" .
+
+:относитсяКПродукту rdf:type owl:ObjectProperty ;
+    rdfs:domain :КредитнаяЗаявка ;
+    rdfs:range :КредитныйПродукт ;
+    rdfs:label "относится к продукту" .
+
+:обрабатываетсяБанком rdf:type owl:ObjectProperty ;
+    rdfs:domain :КредитнаяЗаявка ;
+    rdfs:range :Банк ;
+    rdfs:label "обрабатывается банком" .
+
+#################################################################
+#    Data Properties
+#################################################################
+
+###  Свойства-данные для заемщика
+
+:имеетКредитныйРейтинг rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Заемщик ;
+    rdfs:range xsd:integer ;
+    rdfs:label "имеет кредитный рейтинг" .
+
+:имеетТекущиеПросрочки rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Заемщик ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "имеет текущие просрочки" .
+
+:имеетЕжемесячныйДоход rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Заемщик ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "имеет ежемесячный доход" .
+
+:имеетВозраст rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Заемщик ;
+    rdfs:range xsd:integer ;
+    rdfs:label "имеет возраст" .
+
+:имеетСтажРаботы rdf:type owl:DatatypeProperty ;
+    rdfs:domain :Заемщик ;
+    rdfs:range xsd:integer ;
+    rdfs:label "имеет стаж работы" .
+
+###  Свойства-данные для кредитной заявки
+
+:имеетСуммуКредита rdf:type owl:DatatypeProperty ;
+    rdfs:domain :КредитнаяЗаявка ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "имеет сумму кредита" .
+
+:имеетСрокКредита rdf:type owl:DatatypeProperty ;
+    rdfs:domain :КредитнаяЗаявка ;
+    rdfs:range xsd:integer ;
+    rdfs:label "имеет срок кредита" .
+
+:имеетСтавку rdf:type owl:DatatypeProperty ;
+    rdfs:domain :КредитнаяЗаявка ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "имеет ставку" .
+
+:имеетДатуПодачи rdf:type owl:DatatypeProperty ;
+    rdfs:domain :КредитнаяЗаявка ;
+    rdfs:range xsd:date ;
+    rdfs:label "имеет дату подачи" .
+
+###  Свойства-данные для кредитной истории
+
+:имеетКоличествоКредитов rdf:type owl:DatatypeProperty ;
+    rdfs:domain :КредитнаяИстория ;
+    rdfs:range xsd:integer ;
+    rdfs:label "имеет количество кредитов" .
+
+:имеетПросрочкиВИстории rdf:type owl:DatatypeProperty ;
+    rdfs:domain :КредитнаяИстория ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "имеет просрочки в истории" .
+
+:имеетОбщуюЗадолженность rdf:type owl:DatatypeProperty ;
+    rdfs:domain :КредитнаяИстория ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "имеет общую задолженность" .
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  Заемщики
+
+:Заемщик_Иванов rdf:type owl:NamedIndividual , :Заемщик ;
+    :имеетКредитныйРейтинг "780"^^xsd:integer ;
+    :имеетТекущиеПросрочки "false"^^xsd:boolean ;
+    :имеетЕжемесячныйДоход "150000.00"^^xsd:decimal ;
+    :имеетВозраст "35"^^xsd:integer ;
+    :имеетСтажРаботы "10"^^xsd:integer ;
+    :имеетКредитнуюИсторию :История_Иванова .
+
+:Заемщик_Петров rdf:type owl:NamedIndividual , :Заемщик ;
+    :имеетКредитныйРейтинг "620"^^xsd:integer ;
+    :имеетТекущиеПросрочки "true"^^xsd:boolean ;
+    :имеетЕжемесячныйДоход "80000.00"^^xsd:decimal ;
+    :имеетВозраст "25"^^xsd:integer ;
+    :имеетСтажРаботы "3"^^xsd:integer ;
+    :имеетКредитнуюИсторию :История_Петрова .
+
+:Заемщик_Сидорова rdf:type owl:NamedIndividual , :Заемщик ;
+    :имеетКредитныйРейтинг "710"^^xsd:integer ;
+    :имеетТекущиеПросрочки "false"^^xsd:boolean ;
+    :имеетЕжемесячныйДоход "120000.00"^^xsd:decimal ;
+    :имеетВозраст "28"^^xsd:integer ;
+    :имеетСтажРаботы "5"^^xsd:integer ;
+    :имеетКредитнуюИсторию :История_Сидоровой .
+
+###  Кредитные истории
+
+:История_Иванова rdf:type owl:NamedIndividual , :КредитнаяИстория ;
+    :имеетКоличествоКредитов "2"^^xsd:integer ;
+    :имеетПросрочкиВИстории "false"^^xsd:boolean ;
+    :имеетОбщуюЗадолженность "0"^^xsd:decimal .
+
+:История_Петрова rdf:type owl:NamedIndividual , :КредитнаяИстория ;
+    :имеетКоличествоКредитов "5"^^xsd:integer ;
+    :имеетПросрочкиВИстории "true"^^xsd:boolean ;
+    :имеетОбщуюЗадолженность "150000.00"^^xsd:decimal .
+
+:История_Сидоровой rdf:type owl:NamedIndividual , :КредитнаяИстория ;
+    :имеетКоличествоКредитов "1"^^xsd:integer ;
+    :имеетПросрочкиВИстории "false"^^xsd:boolean ;
+    :имеетОбщуюЗадолженность "50000.00"^^xsd:decimal .
+
+###  Кредитные продукты
+
+:Ипотека rdf:type owl:NamedIndividual , :КредитныйПродукт ;
+    rdfs:label "Ипотечный кредит" .
+
+:Автокредит rdf:type owl:NamedIndividual , :КредитныйПродукт ;
+    rdfs:label "Автокредит" .
+
+:ПотребительскийКредит rdf:type owl:NamedIndividual , :КредитныйПродукт ;
+    rdfs:label "Потребительский кредит" .
+
+###  Банк
+
+:АльфаБанк rdf:type owl:NamedIndividual , :Банк ;
+    rdfs:label "Альфа-Банк" .
+
+###  Кредитные заявки
+
+:Заявка_001 rdf:type owl:NamedIndividual , :КредитнаяЗаявка ;
+    :поданаЗаемщиком :Заемщик_Иванов ;
+    :относитсяКПродукту :Ипотека ;
+    :обрабатываетсяБанком :АльфаБанк ;
+    :имеетСуммуКредита "3000000.00"^^xsd:decimal ;
+    :имеетСрокКредита "240"^^xsd:integer ;
+    :имеетСтавку "8.5"^^xsd:decimal ;
+    :имеетДатуПодачи "2025-01-15"^^xsd:date .
+
+:Заявка_002 rdf:type owl:NamedIndividual , :КредитнаяЗаявка ;
+    :поданаЗаемщиком :Заемщик_Петров ;
+    :относитсяКПродукту :Автокредит ;
+    :обрабатываетсяБанком :АльфаБанк ;
+    :имеетСуммуКредита "1500000.00"^^xsd:decimal ;
+    :имеетСрокКредита "60"^^xsd:integer ;
+    :имеетСтавку "12.0"^^xsd:decimal ;
+    :имеетДатуПодачи "2025-01-16"^^xsd:date .
+
+:Заявка_003 rdf:type owl:NamedIndividual , :КредитнаяЗаявка ;
+    :поданаЗаемщиком :Заемщик_Сидорова ;
+    :относитсяКПродукту :ПотребительскийКредит ;
+    :обрабатываетсяБанком :АльфаБанк ;
+    :имеетСуммуКредита "500000.00"^^xsd:decimal ;
+    :имеетСрокКредита "36"^^xsd:integer ;
+    :имеетСтавку "10.5"^^xsd:decimal ;
+    :имеетДатуПодачи "2025-01-17"^^xsd:date .
