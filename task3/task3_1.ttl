@@ -31,31 +31,31 @@ xsd:date rdf:type rdfs:Datatype .
 #    Object Properties
 #################################################################
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/заявкаПоданаЗаемщиком
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3заявкаПоданаЗаемщиком
 :заявкаПоданаЗаемщиком rdf:type owl:ObjectProperty ;
                        rdfs:domain :КредитнаяЗаявка ;
                        rdfs:range :Заемщик .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетКредитнуюИсторию
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетКредитнуюИсторию
 :имеетКредитнуюИсторию rdf:type owl:ObjectProperty ;
                        rdfs:domain :Заемщик ;
                        rdfs:range :КредитнаяИстория .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/обрабатываетсяБанком
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3обрабатываетсяБанком
 :обрабатываетсяБанком rdf:type owl:ObjectProperty ;
                       rdfs:domain :КредитнаяЗаявка ;
                       rdfs:range :Банк .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/относитсяКПродукту
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3относитсяКПродукту
 :относитсяКПродукту rdf:type owl:ObjectProperty ;
                     rdfs:domain :КредитнаяЗаявка ;
                     rdfs:range :КредитныйПродукт .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/являетсяПоручителемДля
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3являетсяПоручителемДля
 :являетсяПоручителемДля rdf:type owl:ObjectProperty ,
                                  owl:TransitiveProperty ;
                         rdfs:domain :Заемщик ;
@@ -66,85 +66,85 @@ xsd:date rdf:type rdfs:Datatype .
 #    Data properties
 #################################################################
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетВозраст
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетВозраст
 :имеетВозраст rdf:type owl:DatatypeProperty ;
               rdfs:domain :Заемщик ;
               rdfs:range xsd:integer .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетДатуПодачи
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетДатуПодачи
 :имеетДатуПодачи rdf:type owl:DatatypeProperty ;
                  rdfs:domain :КредитнаяЗаявка ;
                  rdfs:range xsd:date .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетЕжемесячныйДоход
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетЕжемесячныйДоход
 :имеетЕжемесячныйДоход rdf:type owl:DatatypeProperty ;
                        rdfs:domain :Заемщик ;
                        rdfs:range xsd:decimal .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетЗадолженность
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетЗадолженность
 :имеетЗадолженность rdf:type owl:DatatypeProperty ;
                     rdfs:domain :КредитнаяИстория ;
                     rdfs:range xsd:decimal .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетКоличествоКредитов
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетКоличествоКредитов
 :имеетКоличествоКредитов rdf:type owl:DatatypeProperty ;
                          rdfs:domain :КредитнаяИстория ;
                          rdfs:range xsd:integer .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетКоэффициентНагрузки
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетКоэффициентНагрузки
 :имеетКоэффициентНагрузки rdf:type owl:DatatypeProperty ;
                           rdfs:domain :КредитнаяЗаявка ;
                           rdfs:range xsd:decimal .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетКредитныйРейтинг
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетКредитныйРейтинг
 :имеетКредитныйРейтинг rdf:type owl:DatatypeProperty ;
                        rdfs:domain :Заемщик ;
                        rdfs:range xsd:integer .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетПлатежВМесяц
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетПлатежВМесяц
 :имеетПлатежВМесяц rdf:type owl:DatatypeProperty ;
                    rdfs:domain :КредитнаяЗаявка ;
                    rdfs:range xsd:decimal .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетПросрочки
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетПросрочки
 :имеетПросрочки rdf:type owl:DatatypeProperty ;
                 rdfs:domain :Заемщик ;
                 rdfs:range xsd:boolean .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетПросрочкиВИстории
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетПросрочкиВИстории
 :имеетПросрочкиВИстории rdf:type owl:DatatypeProperty ;
                         rdfs:domain :КредитнаяИстория ;
                         rdfs:range xsd:boolean .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетСрокКредита
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетСрокКредита
 :имеетСрокКредита rdf:type owl:DatatypeProperty ;
                   rdfs:domain :КредитнаяЗаявка ;
                   rdfs:range xsd:integer .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетСтавку
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетСтавку
 :имеетСтавку rdf:type owl:DatatypeProperty ;
              rdfs:domain :КредитнаяЗаявка ;
              rdfs:range xsd:decimal .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетСтажРаботы
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетСтажРаботы
 :имеетСтажРаботы rdf:type owl:DatatypeProperty ;
                  rdfs:domain :Заемщик ;
                  rdfs:range xsd:integer .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/имеетСуммуКредита
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3имеетСуммуКредита
 :имеетСуммуКредита rdf:type owl:DatatypeProperty ;
                    rdfs:domain :КредитнаяЗаявка ;
                    rdfs:range xsd:decimal .
@@ -154,32 +154,32 @@ xsd:date rdf:type rdfs:Datatype .
 #    Classes
 #################################################################
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Банк
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3Банк
 :Банк rdf:type owl:Class .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Заемщик
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3Заемщик
 :Заемщик rdf:type owl:Class .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/КредитнаяЗаявка
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3КредитнаяЗаявка
 :КредитнаяЗаявка rdf:type owl:Class .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/КредитнаяИстория
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3КредитнаяИстория
 :КредитнаяИстория rdf:type owl:Class .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/КредитныйПродукт
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3КредитныйПродукт
 :КредитныйПродукт rdf:type owl:Class .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/ОдобреннаяЗаявка
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3ОдобреннаяЗаявка
 :ОдобреннаяЗаявка rdf:type owl:Class ;
                   rdfs:subClassOf :КредитнаяЗаявка .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/ОтклоненнаяЗаявка
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3ОтклоненнаяЗаявка
 :ОтклоненнаяЗаявка rdf:type owl:Class ;
                    rdfs:subClassOf :КредитнаяЗаявка .
 
@@ -188,12 +188,12 @@ xsd:date rdf:type rdfs:Datatype .
 #    Individuals
 #################################################################
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Автокредит
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3Автокредит
 :Автокредит rdf:type owl:NamedIndividual ,
                      :КредитныйПродукт .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Заявка001
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3Заявка001
 :Заявка001 rdf:type owl:NamedIndividual ,
                     :КредитнаяЗаявка ;
            :заявкаПоданаЗаемщиком :Татьяна ;
@@ -205,7 +205,7 @@ xsd:date rdf:type rdfs:Datatype .
            :имеетСуммуКредита 3000000 .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Заявка002
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3Заявка002
 :Заявка002 rdf:type owl:NamedIndividual ,
                     :КредитнаяЗаявка ;
            :заявкаПоданаЗаемщиком :Петр ;
@@ -217,7 +217,7 @@ xsd:date rdf:type rdfs:Datatype .
            :имеетСуммуКредита 1500000 .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Заявка003
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3Заявка003
 :Заявка003 rdf:type owl:NamedIndividual ,
                     :КредитнаяЗаявка ;
            :заявкаПоданаЗаемщиком :Степан ;
@@ -229,12 +229,12 @@ xsd:date rdf:type rdfs:Datatype .
            :имеетСуммуКредита 500000 .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Ипотека
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3Ипотека
 :Ипотека rdf:type owl:NamedIndividual ,
                   :КредитныйПродукт .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/История_Петр
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3История_Петр
 :История_Петр rdf:type owl:NamedIndividual ,
                        :КредитнаяИстория ;
               :имеетЗадолженность 150000 ;
@@ -242,7 +242,7 @@ xsd:date rdf:type rdfs:Datatype .
               :имеетПросрочкиВИстории "true"^^xsd:boolean .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/История_Степан
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3История_Степан
 :История_Степан rdf:type owl:NamedIndividual ,
                          :КредитнаяИстория ;
                 :имеетЗадолженность 50000 ;
@@ -250,7 +250,7 @@ xsd:date rdf:type rdfs:Datatype .
                 :имеетПросрочкиВИстории "false"^^xsd:boolean .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/История_Татьяна
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3История_Татьяна
 :История_Татьяна rdf:type owl:NamedIndividual ,
                           :КредитнаяИстория ;
                  :имеетЗадолженность 0 ;
@@ -258,7 +258,7 @@ xsd:date rdf:type rdfs:Datatype .
                  :имеетПросрочкиВИстории "false"^^xsd:boolean .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Петр
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3Петр
 :Петр rdf:type owl:NamedIndividual ,
                :Заемщик ;
       :имеетКредитнуюИсторию :История_Петр ;
@@ -270,17 +270,17 @@ xsd:date rdf:type rdfs:Datatype .
       :имеетСтажРаботы 3 .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/ПотребительскийКредит
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3ПотребительскийКредит
 :ПотребительскийКредит rdf:type owl:NamedIndividual ,
                                 :КредитныйПродукт .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/РайффайзенБанк
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3РайффайзенБанк
 :РайффайзенБанк rdf:type owl:NamedIndividual ,
                          :Банк .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Степан
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3Степан
 :Степан rdf:type owl:NamedIndividual ,
                  :Заемщик ;
         :имеетКредитнуюИсторию :История_Степан ;
@@ -291,7 +291,7 @@ xsd:date rdf:type rdfs:Datatype .
         :имеетСтажРаботы 5 .
 
 
-###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/Татьяна
+###  http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3Татьяна
 :Татьяна rdf:type owl:NamedIndividual ,
                   :Заемщик ;
          :имеетКредитнуюИсторию :История_Татьяна ;
@@ -316,19 +316,43 @@ xsd:date rdf:type rdfs:Datatype .
 #    Rules
 #################################################################
 
-<#z> rdf:type swrl:Variable .
-
-<#a> rdf:type swrl:Variable .
-
-<#3p> rdf:type swrl:Variable .
-
-<#3r> rdf:type swrl:Variable .
-
 :z rdf:type swrl:Variable .
 
 :a rdf:type swrl:Variable .
 
 :r rdf:type swrl:Variable .
+
+[ rdfs:label "Отклонение_просрочки" ;
+   rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :КредитнаяЗаявка ;
+                           swrl:argument1 :z
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate :заявкаПоданаЗаемщиком ;
+                                      swrl:argument1 :z ;
+                                      swrl:argument2 :a
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
+                                                 swrl:propertyPredicate :имеетПросрочки ;
+                                                 swrl:argument1 :a ;
+                                                 swrl:argument2 "true"^^xsd:boolean
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate :ОтклоненнаяЗаявка ;
+                           swrl:argument1 :z
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
 
 [ rdfs:label "Одобрение_рейтинг" ;
    rdf:type swrl:Imp ;
@@ -369,98 +393,6 @@ xsd:date rdf:type rdfs:Datatype .
                rdf:first [ rdf:type swrl:ClassAtom ;
                            swrl:classPredicate :ОдобреннаяЗаявка ;
                            swrl:argument1 :z
-                         ] ;
-               rdf:rest rdf:nil
-             ]
- ] .
-
-[ rdfs:label "Отклонение_просрочки" ;
-   rdf:type swrl:Imp ;
-   swrl:body [ rdf:type swrl:AtomList ;
-               rdf:first [ rdf:type swrl:ClassAtom ;
-                           swrl:classPredicate :КредитнаяЗаявка ;
-                           swrl:argument1 :z
-                         ] ;
-               rdf:rest [ rdf:type swrl:AtomList ;
-                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
-                                      swrl:propertyPredicate :заявкаПоданаЗаемщиком ;
-                                      swrl:argument1 :z ;
-                                      swrl:argument2 :a
-                                    ] ;
-                          rdf:rest [ rdf:type swrl:AtomList ;
-                                     rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
-                                                 swrl:propertyPredicate :имеетПросрочки ;
-                                                 swrl:argument1 :a ;
-                                                 swrl:argument2 "true"^^xsd:boolean
-                                               ] ;
-                                     rdf:rest rdf:nil
-                                   ]
-                        ]
-             ] ;
-   swrl:head [ rdf:type swrl:AtomList ;
-               rdf:first [ rdf:type swrl:ClassAtom ;
-                           swrl:classPredicate :ОтклоненнаяЗаявка ;
-                           swrl:argument1 :z
-                         ] ;
-               rdf:rest rdf:nil
-             ]
- ] .
-
-[ swrla:isRuleEnabled "true"^^xsd:boolean ;
-   rdfs:comment "" ;
-   rdfs:label "Одобрение_поручитель" ;
-   rdf:type swrl:Imp ;
-   swrl:body [ rdf:type swrl:AtomList ;
-               rdf:first [ rdf:type swrl:ClassAtom ;
-                           swrl:classPredicate :КредитнаяЗаявка ;
-                           swrl:argument1 <#z>
-                         ] ;
-               rdf:rest [ rdf:type swrl:AtomList ;
-                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
-                                      swrl:propertyPredicate :заявкаПоданаЗаемщиком ;
-                                      swrl:argument1 <#z> ;
-                                      swrl:argument2 <#a>
-                                    ] ;
-                          rdf:rest [ rdf:type swrl:AtomList ;
-                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
-                                                 swrl:propertyPredicate :являетсяПоручителемДля ;
-                                                 swrl:argument1 <#p> ;
-                                                 swrl:argument2 <#a>
-                                               ] ;
-                                     rdf:rest [ rdf:type swrl:AtomList ;
-                                                rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
-                                                            swrl:propertyPredicate :имеетКредитныйРейтинг ;
-                                                            swrl:argument1 <#p> ;
-                                                            swrl:argument2 <#r>
-                                                          ] ;
-                                                rdf:rest [ rdf:type swrl:AtomList ;
-                                                           rdf:first [ rdf:type swrl:BuiltinAtom ;
-                                                                       swrl:builtin swrlb:greaterThan ;
-                                                                       swrl:arguments [ rdf:type rdf:List ;
-                                                                                        rdf:first <#r> ;
-                                                                                        rdf:rest [ rdf:type rdf:List ;
-                                                                                                   rdf:first 750 ;
-                                                                                                   rdf:rest rdf:nil
-                                                                                                 ]
-                                                                                      ]
-                                                                     ] ;
-                                                           rdf:rest [ rdf:type swrl:AtomList ;
-                                                                      rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
-                                                                                  swrl:propertyPredicate :имеетПросрочки ;
-                                                                                  swrl:argument1 <#a> ;
-                                                                                  swrl:argument2 "false"^^xsd:boolean
-                                                                                ] ;
-                                                                      rdf:rest rdf:nil
-                                                                    ]
-                                                         ]
-                                              ]
-                                   ]
-                        ]
-             ] ;
-   swrl:head [ rdf:type swrl:AtomList ;
-               rdf:first [ rdf:type swrl:ClassAtom ;
-                           swrl:classPredicate :ОдобреннаяЗаявка ;
-                           swrl:argument1 <#z>
                          ] ;
                rdf:rest rdf:nil
              ]
