@@ -4,6 +4,9 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
+@prefix swrla: <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#> .
 @base <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3/> .
 
 #################################################################
@@ -18,6 +21,12 @@
 
 <#r> rdf:type swrl:Variable .
 
+<http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#z> rdf:type swrl:Variable .
+
+<http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#a> rdf:type swrl:Variable .
+
+<http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#r> rdf:type swrl:Variable .
+
 [ swrla:isRuleEnabled "true"^^xsd:boolean ;
    rdfs:comment "" ;
    rdfs:label "Одобрение_рейтинг" ;
@@ -25,25 +34,25 @@
    swrl:body [ rdf:type swrl:AtomList ;
                rdf:first [ rdf:type swrl:ClassAtom ;
                            swrl:classPredicate :КредитнаяЗаявка ;
-                           swrl:argument1 <#z>
+                           swrl:argument1 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#z>
                          ] ;
                rdf:rest [ rdf:type swrl:AtomList ;
                           rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
                                       swrl:propertyPredicate :заявкаПоданаЗаемщиком ;
-                                      swrl:argument1 <#z> ;
-                                      swrl:argument2 <#a>
+                                      swrl:argument1 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#z> ;
+                                      swrl:argument2 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#a>
                                     ] ;
                           rdf:rest [ rdf:type swrl:AtomList ;
                                      rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
                                                  swrl:propertyPredicate :имеетКредитныйРейтинг ;
-                                                 swrl:argument1 <#a> ;
-                                                 swrl:argument2 <#r>
+                                                 swrl:argument1 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#a> ;
+                                                 swrl:argument2 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#r>
                                                ] ;
                                      rdf:rest [ rdf:type swrl:AtomList ;
                                                 rdf:first [ rdf:type swrl:BuiltinAtom ;
                                                             swrl:builtin swrlb:greaterThan ;
                                                             swrl:arguments [ rdf:type rdf:List ;
-                                                                             rdf:first <#r> ;
+                                                                             rdf:first <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#r> ;
                                                                              rdf:rest [ rdf:type rdf:List ;
                                                                                         rdf:first 700 ;
                                                                                         rdf:rest rdf:nil
@@ -53,7 +62,7 @@
                                                 rdf:rest [ rdf:type swrl:AtomList ;
                                                            rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
                                                                        swrl:propertyPredicate :имеетПросрочки ;
-                                                                       swrl:argument1 <#a> ;
+                                                                       swrl:argument1 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#a> ;
                                                                        swrl:argument2 "false"^^xsd:boolean
                                                                      ] ;
                                                            rdf:rest rdf:nil
@@ -65,7 +74,7 @@
    swrl:head [ rdf:type swrl:AtomList ;
                rdf:first [ rdf:type swrl:ClassAtom ;
                            swrl:classPredicate :ОдобреннаяЗаявка ;
-                           swrl:argument1 <#z>
+                           swrl:argument1 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#z>
                          ] ;
                rdf:rest rdf:nil
              ]
@@ -78,18 +87,18 @@
    swrl:body [ rdf:type swrl:AtomList ;
                rdf:first [ rdf:type swrl:ClassAtom ;
                            swrl:classPredicate :КредитнаяЗаявка ;
-                           swrl:argument1 <#z>
+                           swrl:argument1 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#z>
                          ] ;
                rdf:rest [ rdf:type swrl:AtomList ;
                           rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
                                       swrl:propertyPredicate :заявкаПоданаЗаемщиком ;
-                                      swrl:argument1 <#z> ;
-                                      swrl:argument2 <#a>
+                                      swrl:argument1 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#z> ;
+                                      swrl:argument2 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#a>
                                     ] ;
                           rdf:rest [ rdf:type swrl:AtomList ;
                                      rdf:first [ rdf:type swrl:DatavaluedPropertyAtom ;
                                                  swrl:propertyPredicate :имеетПросрочки ;
-                                                 swrl:argument1 <#a> ;
+                                                 swrl:argument1 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#a> ;
                                                  swrl:argument2 "true"^^xsd:boolean
                                                ] ;
                                      rdf:rest rdf:nil
@@ -99,7 +108,7 @@
    swrl:head [ rdf:type swrl:AtomList ;
                rdf:first [ rdf:type swrl:ClassAtom ;
                            swrl:classPredicate :ОтклоненнаяЗаявка ;
-                           swrl:argument1 <#z>
+                           swrl:argument1 <http://kik.misis.ru/ontology/mpi/2025/Kharlashkina-Aleksandra/task3#z>
                          ] ;
                rdf:rest rdf:nil
              ]
